@@ -1,3 +1,4 @@
+// Store player score 
 let playerScore = 0;
 let computerScore = 0;
 
@@ -18,33 +19,44 @@ function computerPlay() {
 
 // Return the winner of the round 
 function playRound(playerSelection, computerSelection) {
-    if ((playerSelection === 'rock' && computerSelection === 'scissors') ||
+
+    if (playerSelection === computerSelection) {
+        playTied();
+    } else if ((playerSelection === 'rock' && computerSelection === 'scissors') ||
     (playerSelection === 'scissors' && computerSelection === 'paper') ||
     (playerSelection === 'paper' && computerSelection === 'rock')) {
-        return printWinner(1, playerSelection, computerSelection);
-    } else if (playerSelection === computerSelection) {
-        return printWinner(0, playerSelection, computerSelection);
-    } else {
-        return printWinner(2, playerSelection, computerSelection);
+        playerWon();
+    }else {
+        computerWon();
     }
+    printScore(playerSelection, computerSelection);
 }
 
-// Print the winner 
-function printWinner(winner, playerSelection, computerSelection) {
-    
-    console.log(`You selected ${playerSelection}\nComputer selected ${computerSelection}`)
-    if (winner == 1) {
-        console.log("You won !");
-        ++playerScore;
-    } else if (winner == 0) {
-        console.log("Play tied");
-    } else {
-        console.log("You lost!");
-        ++computerScore;
-    }
-    console.log(`Your score : ${playerScore} \nComputer score : ${computerScore}`);
+// PLayer won 
+function playerWon() {
+    console.log("You won!");
+    ++playerScore;
 }
 
+// Computer won 
+function computerWon() {
+    console.log("You lost!");
+    ++computerScore;
+}
+
+// Play tied
+function playTied() {
+    console.log("Play tied!");
+}
+
+// Print score 
+function printScore(playerSelection, computerSelection) {
+    console.log(`You Selected: '${playerSelection}' Computer Selected: '${computerSelection}'`);
+    console.log(`Your Score  : '${playerScore}'     Computer Score   : '${computerScore}'`); 
+}
+
+
+// Start game
 function game() {
 
     // Store selection
@@ -63,6 +75,15 @@ function game() {
 
         // Print the winner 
         playRound(playerSelection, computerSelection);
+    }
+
+    // Print final winner 
+    if (playerScore > computerScore) {
+        console.log("----You won the game!!----");
+    } else if (playerScore == computerScore) {
+        console.log("----Game Tied!----");
+    } else {
+        console.log("----Game Over!----");
     }
 }
 
