@@ -22,7 +22,7 @@ body {
 
 #buttons {
     width: 100vw;
-    max-width: 800px;
+    max-width: 850px;
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
@@ -33,13 +33,14 @@ body {
 }
 
 .button button{
-    width: 8em;
-    height: 3em;
+    width: 6em;
+    height: 4em;
     font-family: 'Tourney', Helvetica, sans-serif;
     font-size: 2em;
     font-weight: bold;
-    background: linear-gradient(45deg, rgb(236, 121, 112), rgb(25, 152, 226));
-    border: 2px solid;
+    color: white;
+    background: #000d;
+    border: 2px solid #fff;
     border-radius: 10px;
     box-shadow: -0.5em -0.5em 2em #000d;
     text-shadow: 0 0 1px rgb(0, 0, 0);
@@ -47,6 +48,64 @@ body {
 }
 
 .button button:hover {
-    transform: scale(1.05);
-    box-shadow: -0.5em -0.5em 2em #000e;
+    transform: scale(1.01);
 }
+
+.button-clicked {
+    transform: scale(1.01);
+    color: yellow !important;
+    box-shadow: 0 0 1em rgba(250, 250, 14, 0.1) !important;
+    border-color: #fffa !important;
+}
+
+.control {
+    text-align: center;
+    color: #fff5;
+    font-family: monospace, Courier;
+}
+
+#scores {
+    width: 100vw;
+    height: 16em;
+    max-width: 850px;
+    margin: 6em auto 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.score-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 12em;
+    height: 12em;
+    /*border: 2px solid #fff;*/
+    border-radius: 50%;
+    background-color: #0005;
+    box-shadow: 0 0 3em #0005;
+    color: #fff;
+    font-family: 'Tourney', Helvetica, sans-serif;
+    font-size: 1.2em;
+}
+
+.score-div div {
+    font-family: Helvetica, sans-serif;   
+    font-size: 0.5em;
+}
+
+.score-div:hover {
+    transform: scale(1.05);
+    background-color: #0008;
+    box-shadow: 0 0 3em #0009; 
+}
+
+.score-title {
+    color: white;
+    font-family: monospace;
+    text-align: center;
+    opacity: 0.5;
+}
+
+

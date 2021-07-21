@@ -11,7 +11,7 @@
         
         <link rel="stylesheet" href="styles/style.css" type="text/css" media="screen" title="no title" charset="utf-8">
         
-        <script src="scripts/script.js"></script>
+        <script src="scripts/script.js" defer></script>
 
     </head>
 
@@ -24,15 +24,36 @@
         <section id="buttons">
 
             <div class="button">
-                <button id="rock">Rock</button>
+                <button id="rock" data-key="82">Rock</button>
+                <div class="control"><em>PRESS</em> R</div>
             </div>
             <div class="button">
-                <button id="paper">Paper</button>
+                <button id="paper" data-key="80">Paper</button>
+                <div class="control"><em>PRESS</em> P</div>
             </div>
             <div class="button">
-                <button id="scissors">Scissors</button>
+                <button id="scissors" data-key="83">Scissors</button>
+                <div class="control"><em>PRESS</em> S</div>
             </div>
 
+        </section>
+
+        <section id="scores">
+
+            <div>
+                <h2 class="score-title">You</h2>
+                <div id="player" class="score-div">
+                    <h3 id="you-played">Your Choice</h3>
+                    <div id="your-score">Score: 0</div>
+                </div>
+            </div>
+            <div>
+                <h2 class="score-title">Computer</h2>
+                <div id="computer" class="score-div">
+                    <h3 id="comp-played">Computer Choice</h3>
+                    <div id="comp-score">Score: 0</div>
+                </div>
+            </div>
         </section>
 
     </body>

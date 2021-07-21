@@ -18,7 +18,9 @@ function computerPlay() {
 }
 
 // Return the winner of the round 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection) {
+
+    const computerSelection = computerPlay();
 
     if (playerSelection === computerSelection) {
         playTied();
@@ -53,39 +55,45 @@ function playTied() {
 function printScore(playerSelection, computerSelection) {
     console.log(`You Selected: '${playerSelection}' Computer Selected: '${computerSelection}'`);
     console.log(`Your Score  : '${playerScore}'     Computer Score   : '${computerScore}'`); 
+
+    const yourScore = document.querySelector('#your-score');
+    const yourPlay = document.querySelector('#you-played');
+    
+    yourScore.textContent = `Score: ${playerScore}`;
+    yourPlay.textContent = playerSelection;
+
+    const compScore = document.querySelector('#comp-score');
+    const compPlay = document.querySelector('#comp-played');
+
+    compScore.textContent = `Score: ${computerScore}`;
+    compPlay.textContent = computerSelection;
+
 }
 
+function clickChoice(e) {
+    const choice = document.querySelector(`#${e.target['id']}`);
+    if (choice === null) return;
 
-// Start game
-function startGame() {
+    choice.classList.add('button-clicked');
 
-    // Store selection
-    let playerSelection;
-    let computerSelection;
-
-    /* Play game of 5 rounds
-    for (let i = 0; i < 5; ++i) {
-        
-        // Get the player slection
-        playerSelection = prompt("ROCK or PAPER or SCISSORS ?", "");
-        playerSelection = (playerSelection == null) ? "" : playerSelection.toLowerCase();
-
-        // Get the computer selection 
-        computerSelection = computerPlay();
-
-        // Print the winner 
-        playRound(playerSelection, computerSelection);
-    }*/
-
-    // Print final winner 
-    if (playerScore > computerScore) {
-        console.log("----You won the game!!----");
-    } else if (playerScore == computerScore) {
-        console.log("----Game Tied!----");
-    } else {
-        console.log("----Game Over!----");
-    }
+    playRound(choice['id']);
 }
 
-//startGame();
+function keyChoice(e) {
+    const choice = document.querySelector(`button[data-key='${e.keyCode}']`);
+    if (choice === null) return;
 
+    choice.classList.add('button-clicked');
+
+    playRound(choice['id']);
+}
+
+function removeTransition(e) {
+    e.target.classList.remove('button-clicked');
+}
+
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => button.addEventListener('click', clickChoice));
+buttons.forEach((button) => button.addEventListener('transitionend', removeTransition));
+
+window.addEventListener('keydown', keyChoice);
