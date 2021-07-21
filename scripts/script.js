@@ -57,13 +57,13 @@ function printScore(playerSelection, computerSelection) {
 
 
 // Start game
-function game() {
+function startGame() {
 
     // Store selection
     let playerSelection;
     let computerSelection;
 
-    // Play game of 5 rounds
+    /* Play game of 5 rounds
     for (let i = 0; i < 5; ++i) {
         
         // Get the player slection
@@ -75,7 +75,7 @@ function game() {
 
         // Print the winner 
         playRound(playerSelection, computerSelection);
-    }
+    }*/
 
     // Print final winner 
     if (playerScore > computerScore) {
@@ -87,5 +87,5 @@ function game() {
     }
 }
 
-game();
+//startGame();
 
