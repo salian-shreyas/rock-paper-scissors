@@ -2,9 +2,8 @@ body {
     margin: 0;
     padding: 0;
     background-color: #000d;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Qahiri', Helvetica, sans-serif;
     font-size: 12px;
-    background: url();
 }
 
 #heading {
@@ -15,7 +14,7 @@ body {
 }
 
 #heading h1 {
-    font-size: 3em;
+    font-size: 5em;
     color: yellow;
     text-align: center;
     text-shadow: -1px -1px 4px rgb(0, 0, 0);
@@ -36,17 +35,18 @@ body {
 .button button{
     width: 8em;
     height: 3em;
+    font-family: 'Tourney', Helvetica, sans-serif;
     font-size: 2em;
     font-weight: bold;
     background: linear-gradient(45deg, rgb(236, 121, 112), rgb(25, 152, 226));
     border: 2px solid;
     border-radius: 10px;
     box-shadow: -0.5em -0.5em 2em #000d;
+    text-shadow: 0 0 1px rgb(0, 0, 0);
     transition: all 0.5s;
 }
 
 .button button:hover {
     transform: scale(1.05);
     box-shadow: -0.5em -0.5em 2em #000e;
-    text-shadow: -1px -1px 1px rgb(255, 255, 255);
 }
