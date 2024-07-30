@@ -14,3 +14,22 @@ function getComputerChoice() {
         return SCISSORS;
     }
 }
+
+function getPlayerChoice() {
+    let playerChoice = prompt("CHOOSE: ROCK | PAPER | SCISSORS");
+    playerChoice = formatPlayerChoice(playerChoice); 
+
+    while (playerChoice !== ROCK
+        && playerChoice !== PAPER
+        && playerChoice !== SCISSORS
+    ) {
+        playerChoice = prompt("PLEASE CHOOSE: ROCK | PAPER | SCISSORS");
+        playerChoice = formatPlayerChoice(playerChoice);
+    }
+
+    return playerChoice;
+}
+
+function formatPlayerChoice(playerChoice) { 
+    return playerChoice.trim().toLowerCase();
+}
