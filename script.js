@@ -4,6 +4,34 @@ const SCISSORS = "SCISSORS";
 const PLAYER = "PLAYER";
 const COMPUTER = "COMPUTER";
 
+let playerScore = 0;
+let computerScore = 0;
+let playerChoice;
+let computerChoice;
+
+// Get player's choice by listening to click event 
+const buttonContainer = document.querySelector(".container");
+buttonContainer.addEventListener( "click", e => {
+	const target = e.target;
+
+	switch (target.id) {
+		case "rock":
+			playerChoice = ROCK;
+			break;
+		
+		case "paper":
+			playerChoice = PAPER;
+			break;
+
+		case "scissors":
+			playerChoice = SCISSORS;
+			break;
+
+		default:
+			console.log("Unknown id value");
+	}
+});
+
 function getComputerChoice() {
     // Get a number that is between 0 (inclusive) and 3(exclusive)
     let randomNumber = Math.floor(Math.random() * 3);
@@ -15,25 +43,6 @@ function getComputerChoice() {
     } else {
         return SCISSORS;
     }
-}
-
-function getPlayerChoice() {
-    let playerChoice = prompt("CHOOSE: ROCK | PAPER | SCISSORS");
-    playerChoice = formatPlayerChoice(playerChoice); 
-
-    while (playerChoice !== ROCK
-        && playerChoice !== PAPER
-        && playerChoice !== SCISSORS
-    ) {
-        playerChoice = prompt("PLEASE CHOOSE: ROCK | PAPER | SCISSORS");
-        playerChoice = formatPlayerChoice(playerChoice);
-    }
-
-    return playerChoice;
-}
-
-function formatPlayerChoice(playerChoice) { 
-    return playerChoice.trim().toUpperCase();
 }
 
 function playRound(playerChoice, computerChoice) {
@@ -58,28 +67,17 @@ function displayScore(playerScore, computerScore) {
 }
 
 function playGame() {
-    let playerScore = 0;
-    let computerScore = 0;
-    let playerChoice;
-    let computerChoice;
-    let winner;
+	winner = playRound(playerChoice, computerChoice);
 
-    for (let i = 0; i < 5; i++) {
-        playerChoice = getPlayerChoice();
-        computerChoice = getComputerChoice();
-
-        winner = playRound(playerChoice, computerChoice);
-
-        if (winner === PLAYER) {
-            playerScore++;
-            console.log(`YOU WON! ${playerChoice} beats ${computerChoice}`);
-        } else if (winner === COMPUTER) {
-            computerScore++;
-            console.log(`YOU LOSE! ${computerChoice} beats ${playerChoice}`);
-        } else {
-            console.log("TIE!");
-        }
-    }
+	if (winner === PLAYER) {
+		playerScore++;
+		console.log(`YOU WON! ${playerChoice} beats ${computerChoice}`);
+	} else if (winner === COMPUTER) {
+		computerScore++;
+		console.log(`YOU LOSE! ${computerChoice} beats ${playerChoice}`);
+	} else {
+		console.log("TIE!");
+	}
 
     // Declare Winner
     if (playerScore > computerScore) {
