@@ -9,8 +9,8 @@ let computerScore = 0;
 let playerChoice;
 let computerChoice;
 
-// Get player's choice by listening to click event 
-const buttonContainer = document.querySelector(".container");
+// Get player's choice from button clicks 
+const buttonContainer = document.querySelector(".button-container");
 buttonContainer.addEventListener( "click", e => {
 	const target = e.target;
 
@@ -31,6 +31,10 @@ buttonContainer.addEventListener( "click", e => {
 			console.log("Unknown id value");
 	}
 });
+
+const playerChoiceDisplay = document.querySelector(".player-choice");
+const computerChoiceDisplay = document.querySelector(".computer-choice");
+const roundWinnerDisplay = document.querySelector(".round-winner");
 
 function getComputerChoice() {
     // Get a number that is between 0 (inclusive) and 3(exclusive)
