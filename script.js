@@ -30,6 +30,8 @@ buttonContainer.addEventListener( "click", e => {
 		default:
 			console.log("Unknown id value");
 	}
+
+	playGame();
 });
 
 const playerChoiceDisplay = document.querySelector(".player-choice");
@@ -68,32 +70,53 @@ function playRound(playerChoice, computerChoice) {
     }
 }
 
-function displayScore(playerScore, computerScore) {
-    console.log(`PLAYER SCORE    : ${playerScore}`);
-    console.log(`COMPUTER SCORE  : ${computerScore}`);
+function updateChoice() {
+	playerChoiceDisplay.textContent = `PLAYER'S CHOICE: ${playerChoice}`;
+	computerChoiceDisplay.textContent = `COMPUTER'S CHOICE: ${computerChoice}`;
+}
+
+function updateScore() {
+	playerScoreDisplay.textContent = `PLAYER SCORE: ${playerScore}`;
+	computerScoreDisplay.textContent = `COMPUTER SCORE: ${computerScore}`;
+}
+
+function displayGameMessage() {
+	if (playerScore > computerScore) {
+		gameMessageDisplay.textContent = "YOU WON!!";
+	} else {
+		gameMessageDisplay.textContent = "YOU LOSE!!";
+	}
+}
+
+function resetGame() {
+	playerChoiceDisplay.textContent = "PLAYER'S CHOICE:";
+	computerChoiceDisplay.textContent = "COMPUTER'S CHOICE:";
+	playerScoreDisplay.textContent = "PLAYER SCORE:";
+	computerScoreDisplay.textContent = "COMPUTER SCORE:";
 }
 
 function playGame() {
-	winner = playRound(playerChoice, computerChoice);
+	computerChoice = getComputerChoice();
+	updateChoice();
+
+	const winner = playRound(playerChoice, computerChoice);
 
 	if (winner === PLAYER) {
 		playerScore++;
-		console.log(`YOU WON! ${playerChoice} beats ${computerChoice}`);
+		roundWinnerDisplay.textContent = `YOU WON! ${playerChoice} beats ${computerChoice}`
 	} else if (winner === COMPUTER) {
 		computerScore++;
-		console.log(`YOU LOSE! ${computerChoice} beats ${playerChoice}`);
+		roundWinnerDisplay.textContent = `YOU LOSE! ${computerChoice} beats ${playerChoice}`
 	} else {
-		console.log("TIE!");
+		roundWinnerDisplay.textContent = "TIE!";
 	}
 
+	updateScore();
+
     // Declare Winner
-    if (playerScore > computerScore) {
-        console.log("YOU WON THE GAME!!");
-    } else if (playerScore === computerScore) {
-        console.log("TIE!!");
-    } else {
-        console.log("YOU LOST THE GAME!!");
-    }
-    displayScore(playerScore, computerScore);
+    if (playerScore === 5 || computerScore === 5) {
+		displayGameMessage();
+		resetGame();
+	}
 }
 
