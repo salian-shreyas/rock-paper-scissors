@@ -35,6 +35,9 @@ buttonContainer.addEventListener( "click", e => {
 const playerChoiceDisplay = document.querySelector(".player-choice");
 const computerChoiceDisplay = document.querySelector(".computer-choice");
 const roundWinnerDisplay = document.querySelector(".round-winner");
+const playerScoreDisplay = document.querySelector(".player-score");
+const computerScoreDisplay = document.querySelector(".computer-score");
+const gameMessageDisplay = document.querySelector(".game-message");
 
 function getComputerChoice() {
     // Get a number that is between 0 (inclusive) and 3(exclusive)
